@@ -24,7 +24,7 @@ public class HelloSender {
     private final ModelIdProvider modelIdProvider;
     private final ObjectMapper objectMapper;
 
-//    @Scheduled(fixedRate = 2000)
+    @Scheduled(fixedRate = 2000)
     public void sendMessage() {
         log.info("I'm Sending a message");
         HelloWorldMessage message = HelloWorldMessage

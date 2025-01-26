@@ -43,11 +43,6 @@ public class HelloMessageListener {
         log.info("### HelloWorldMessage: {}", helloWorldMessage);
         log.info("### Spring Message: {}", springMessage);
 
-        try {
-            Thread.sleep(10_000);
-        } catch (InterruptedException e) {
-            log.error("Problem with sleep", e);
-        }
         final var payloadMsg = HelloWorldMessage.builder()
                 .id(modelIdProvider.random())
                 .message("World!!")
