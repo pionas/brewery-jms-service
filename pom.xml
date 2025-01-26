@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>pl.excellentapp.brewery.boot</groupId>
+        <artifactId>brewery-parent</artifactId>
+        <version>1.0</version>
+    </parent>
+
+    <groupId>pl.excellentapp.brewery.beer.jms</groupId>
+    <artifactId>brewery-jms-service</artifactId>
+    <version>1.0</version>
+
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/pionas/brewery-parent</url>
+        </repository>
+    </repositories>
+
+    <scm>
+        <url>https://github.com/pionas/brewery-jms-service</url>
+        <connection>scm:git:https://github.com/pionas/brewery-jms-service.git</connection>
+        <developerConnection>scm:git:https://github.com/pionas/brewery-jms-service.git</developerConnection>
+    </scm>
+
+    <dependencies>
+        <!-- external dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-artemis</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.17.4</version>
+                <executions>
+                    <execution>
+                        <id>pitest-mutation-coverage</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>scmMutationCoverage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>1.2.1</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <outputFormats>
+                        <format>XML</format>
+                        <format>HTML</format>
+                    </outputFormats>
+                    <excludedClasses>
+                        <param>pl.excellentapp.brewery.order.**.*Mapper*</param>
+                    </excludedClasses>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
