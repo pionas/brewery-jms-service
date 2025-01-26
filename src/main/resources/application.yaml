@@ -1,3 +1,6 @@
 spring:
   application:
     name: brewery-jms-service
+  artemis:
+    user: artemis-user
+    password: artemis-password
