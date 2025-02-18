@@ -8,10 +8,7 @@ import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
 
 @Configuration(proxyBeanMethods = false)
-class JmsConfig {
-
-    public static final String MY_QUEUE = "my-hello-world";
-    public static final String MY_SEND_RCV_QUEUE = "replybacktome";
+class JmsConfiguration {
 
     @Bean
     MessageConverter messageConverter(ObjectMapper objectMapper) {
