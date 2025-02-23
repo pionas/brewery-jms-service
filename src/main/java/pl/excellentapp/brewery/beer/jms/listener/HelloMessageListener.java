@@ -10,7 +10,7 @@ import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
-import pl.excellentapp.brewery.beer.jms.config.JmsConfig;
+import pl.excellentapp.brewery.beer.jms.config.JmsConfiguration;
 import pl.excellentapp.brewery.beer.jms.model.HelloWorldMessage;
 import pl.excellentapp.brewery.beer.jms.utils.ModelIdProvider;
 
@@ -22,7 +22,7 @@ public class HelloMessageListener {
     private final JmsTemplate jmsTemplate;
     private final ModelIdProvider modelIdProvider;
 
-    @JmsListener(destination = JmsConfig.MY_QUEUE)
+    @JmsListener(destination = JmsConfiguration.MY_QUEUE)
     public void listen(@Payload HelloWorldMessage helloWorldMessage,
                        @Headers MessageHeaders headers, Message message) {
 
@@ -32,7 +32,7 @@ public class HelloMessageListener {
         log.info("Message: {}", message);
     }
 
-    @JmsListener(destination = JmsConfig.MY_SEND_RCV_QUEUE)
+    @JmsListener(destination = JmsConfiguration.MY_SEND_RCV_QUEUE)
     public void listenForHello(@Payload HelloWorldMessage helloWorldMessage,
                                @Headers MessageHeaders headers,
                                Message jmsMessage,
